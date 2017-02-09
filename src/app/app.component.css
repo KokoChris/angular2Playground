@@ -1,0 +1,8 @@
+h1 {
+    color:green;
+
+}
+
+.nav.navbar-nav {font-size: 15px;}
+#searcForm {margin-right: 100px;}
+@media(max-width:1200px) {#searchForm {display: none}}
