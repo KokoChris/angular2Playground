@@ -19,9 +19,12 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-	"../node_modules/bootstrap/dist/css/bootstrap.min.css"
+	    "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "../node_modules/toastr/build/toastr.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+         
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/events-thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component'; // if you create the component from the command line this import will happend automatically. ng g component navbar
+import { EventService } from './events/shared/event.service';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { NavbarComponent } from './navbar/navbar.component'; // if you create th
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
