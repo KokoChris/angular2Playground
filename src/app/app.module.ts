@@ -11,7 +11,9 @@ import { NavbarComponent } from './navbar/navbar.component'; // if you create th
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventService } from './events/shared/event.service';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import {appRoutes} from '../routes';
+import { Error404Component } from './errors/404.component';
+
+import { appRoutes } from '../routes';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {appRoutes} from '../routes';
     EventsListComponent,
     EventThumbnailComponent,
     NavbarComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
