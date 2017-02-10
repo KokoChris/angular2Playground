@@ -12,7 +12,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { EventService } from './events/shared/event.service';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Error404Component } from './errors/404.component';
-
+import { CreateEventComponent } from './events/create-event.component';
 import { appRoutes } from '../routes';
 
 @NgModule({
@@ -22,7 +22,8 @@ import { appRoutes } from '../routes';
     EventThumbnailComponent,
     NavbarComponent,
     EventDetailsComponent,
-    Error404Component
+    Error404Component,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
