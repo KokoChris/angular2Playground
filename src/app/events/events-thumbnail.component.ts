@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IEvent } from './shared/event.model'
 
 @Component({
     selector: 'event-thumbnail',
@@ -31,14 +32,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 //ngStyle similar to ngClass but applies styles instead of classes
 
 export class EventThumbnailComponent {
-    @Input() event: any
+    @Input() event: IEvent
     @Output() eventClick = new EventEmitter();
     handleClickMe(data) {
         this.eventClick.emit(data);
     }
-    getTimeClass():any {
+    getTimeClass(): any {
         const isEarlyStart = this.event && this.event.time === '8:00 am';
-        return isEarlyStart ? "green" : ""        
+        return isEarlyStart ? "green" : ""
     }
 
 }

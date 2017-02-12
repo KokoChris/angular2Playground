@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/events-thumbnail.component';
-import { NavbarComponent } from './navbar/navbar.component'; // if you create the component from the command line this import will happend automatically. ng g component navbar
-import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { NavbarComponent } from './navbar/navbar.component'; // if you create the component from the command line this import will happen automatically. ng g component navbar
 import { EventService } from './events/shared/event.service';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { Error404Component } from './errors/404.component';
-import { CreateEventComponent } from './events/create-event.component';
+import {
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventRouteActivator,
+  EventListResolver,
+  CreateSessionComponent
+} from './events/index'
+import { AuthService } from './user/auth.service';
+
 import { appRoutes } from '../routes';
 
 @NgModule({
@@ -23,16 +30,33 @@ import { appRoutes } from '../routes';
     NavbarComponent,
     EventDetailsComponent,
     Error404Component,
-    CreateEventComponent
+    CreateEventComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     ToastModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EventService],
+  providers: [EventService,
+    EventRouteActivator,
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
+    },
+    EventListResolver,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+function checkDirtyState(component: CreateEventComponent) {
+  if (component.isDirty) {
+    return window.confirm("You have not saved this event, do you really want to cancel;");
+  }
+  return true;
+}

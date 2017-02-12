@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { EventService } from './shared/event.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ActivatedRoute } from '@angular/router';
+import { IEvent } from './shared/index';
 @Component({
 
   template: `
@@ -18,15 +20,15 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 })
 
 export class EventsListComponent implements OnInit {
-  
-  events: any[]
-  constructor(private eventService: EventService, public toastr: ToastsManager, vcr: ViewContainerRef) {
+
+  events: IEvent[]
+  constructor(private eventService: EventService, public toastr: ToastsManager, vcr: ViewContainerRef, private route: ActivatedRoute) {
     this.toastr.setRootViewContainerRef(vcr)
   }
   handleThumbnailClick(eventName) {
     this.toastr.success(eventName)
   }
   ngOnInit() {
-    this.events = this.eventService.getEvents();
+    this.events = this.route.snapshot.data['events'];
   }
 }
