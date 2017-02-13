@@ -16,11 +16,14 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent,
+  DurationPipe
 } from './events/index'
 import { AuthService } from './user/auth.service';
 
 import { appRoutes } from '../routes';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { appRoutes } from '../routes';
     EventDetailsComponent,
     Error404Component,
     CreateEventComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
