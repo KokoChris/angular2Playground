@@ -23,10 +23,8 @@ import {
 import { AuthService } from './user/auth.service';
 
 import { appRoutes } from '../routes';
-
-
-@NgModule({
-  declarations: [
+const declarations = () => {
+  return [
     AppComponent,
     EventsListComponent,
     EventThumbnailComponent,
@@ -37,7 +35,11 @@ import { appRoutes } from '../routes';
     CreateSessionComponent,
     SessionListComponent,
     DurationPipe
-  ],
+  ]
+}
+
+@NgModule({
+  declarations: declarations(),
   imports: [
     BrowserModule,
     FormsModule,
